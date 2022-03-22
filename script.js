@@ -1,36 +1,86 @@
-function add(a,b) {
+const numberButton = document.querySelectorAll('.number');
+const operationButton = document.querySelectorAll('.operation')
+const clearButton = document.querySelector('.clear')
+const deleteButton = document.querySelector('.delete')
+const showResult = document.querySelector('.result')
+const currentOperand = document.querySelector('.current-operand')
+const previousOperand = document.querySelector('.previous-operand')
+const equalsKey = document.querySelector('.equals');
+
+
+currentOperand.textContent = ' ';
+previousOperand.textContent = ' ';
+
+function add(a, b) {
     return a + b;
-} 
-
-function subtract(a,b) {
+  };
+  
+  // Subtraction of a and b ...
+  function subtract(a, b) {
     return a - b;
-} 
-
-function multiply(a,b) {
+  };
+  
+  // Multiply a, b ... 
+  function multiply(a, b) {
     return a * b;
-} 
-
-function divide(a,b) {
+  };
+  
+  // Divide a,b ... 
+  function divide(a, b) {
     return a / b;
-} 
-
-function operate(num1,num2,operator) {
-
-    switch(operator) {
-        case "+":
-            console.log(add(num1,num2));
-            break;
-
-        case "-":
-            console.log(subtract(num1,num2));
-            break;
-        case "*":
-            console.log(multiply(num1,num2));
-            break;
-
-        case "/":
-            console.log(divide(num1,num2));
-            break;
+  };
+  
+  // Create a new function operate that takes an operator and 2 numbers and then calls one of the above functions on the numbers.
+  function operate(num1, num2, operator) {
+    switch (operator) {
+      case "+":
+        return add(num1, num2);
+      case "-":
+        return subtract(num1, num2);
+      case "*":
+        return multiply(num1, num2);
+      case "/":
+        return divide(num1, num2);
     }
-}
+  };
+  
+
+let storedNumber = '';
+let clickedOperator = '';
+let firstNumber = '';
+let result = '';
+currentOperand.textContent = 0;
+
+numberButton.forEach((number) => {
+    number.addEventListener('click', () => {
+            storedNumber += number.textContent;
+            console.log(storedNumber);
+            previousOperand.textContent += storedNumber;
+            calculate();
+        })
+  });
+//   https://stackoverflow.com/questions/63058457/calculator-project-stuck-javascript
+  operationButton.forEach((operator => {
+    operator.addEventListener('click', function() {
+      firstNumber = storedNumber;
+      clickedOperator = operator.textContent;
+      previousOperand.textContent = storedNumber + clickedOperator;
+      storedNumber = '';
+    })
+
+  }));
+
+  const calculate = () => {
+    const result = operate(parseFloat(firstNumber), parseFloat(storedNumber), clickedOperator);
+    currentOperand.textContent = result;
+    }
+  
+equalsKey.addEventListener('click', (e) => {
+        calculate();
+        console.log(e);
+    });
+
+
+
+
 
