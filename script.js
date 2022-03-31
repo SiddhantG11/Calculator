@@ -70,11 +70,11 @@ numberButton.forEach((number) => {
 
   }));
   clearButton.addEventListener('click', () => {
-    document.querySelector('.current-operand').innerHTML = 0
+    currentOperand.innerHTML = 0
     storedNumber = '';
     firstNumber = '';
 
-  } )
+  })
 
 
   const calculate = () => {
