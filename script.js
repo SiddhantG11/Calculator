@@ -49,7 +49,7 @@ let storedNumber = '';
 let clickedOperator = '';
 let firstNumber = '';
 let result = '';
-currentOperand.textContent = 0;
+currentOperand.innerHTML = 0;
 
 numberButton.forEach((number) => {
     number.addEventListener('click', () => {
@@ -61,14 +61,21 @@ numberButton.forEach((number) => {
   });
 //   https://stackoverflow.com/questions/63058457/calculator-project-stuck-javascript
   operationButton.forEach((operator => {
-    operator.addEventListener('click', function() {
-      firstNumber = storedNumber;
-      clickedOperator = operator.textContent;
-      previousOperand.textContent = storedNumber + clickedOperator;
-      storedNumber = '';
-    })
+    operator.addEventListener('click', () => {
+        firstNumber = storedNumber;
+        clickedOperator = operator.textContent;
+        previousOperand.textContent = storedNumber + clickedOperator;
+        storedNumber = '';
+      })
 
   }));
+  clearButton.addEventListener('click', () => {
+    document.querySelector('.current-operand').innerHTML = 0
+    storedNumber = '';
+    firstNumber = '';
+
+  } )
+
 
   const calculate = () => {
     const result = operate(parseFloat(firstNumber), parseFloat(storedNumber), clickedOperator);
@@ -79,6 +86,7 @@ equalsKey.addEventListener('click', (e) => {
         calculate();
         console.log(e);
     });
+
 
 
 
