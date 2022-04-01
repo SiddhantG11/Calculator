@@ -6,8 +6,6 @@ const showResult = document.querySelector('.result')
 const currentOperand = document.querySelector('.current-operand')
 const previousOperand = document.querySelector('.previous-operand')
 const equalsKey = document.querySelector('.equals');
-
-
 currentOperand.textContent = ' ';
 previousOperand.textContent = ' ';
 
@@ -38,6 +36,7 @@ function add(a, b) {
       case "-":
         return subtract(num1, num2);
       case "*":
+        if(num2==0) return null;
         return multiply(num1, num2);
       case "/":
         return divide(num1, num2);
@@ -49,42 +48,57 @@ let storedNumber = '';
 let clickedOperator = '';
 let firstNumber = '';
 let result = '';
-currentOperand.innerHTML = 0;
+currentOperand.textContent = 0;
 
 numberButton.forEach((number) => {
-    number.addEventListener('click', () => {
-            storedNumber += number.textContent;
-            console.log(storedNumber);
-            previousOperand.textContent += storedNumber;
-            calculate();
-        })
-  });
-//   https://stackoverflow.com/questions/63058457/calculator-project-stuck-javascript
+  number.addEventListener('click', function() {
+    storedNumber += number.textContent;
+    previousOperand.textContent += number.textContent;
+    // currentOperand.textContent += previousOperand.textContent;
+  })
+});
+// numberButton.forEach((number) => {
+//     number.addEventListener('click', () => {
+      
+//             storedNumber = storedNumber + number.textContent;
+//             previousOperand.textContent += number.textContent;
+//             calculate();
+//         })
+//   });
+//   https://stackoverflow.com/questions/63058457/calculator-project-stuck-javascript 
   operationButton.forEach((operator => {
     operator.addEventListener('click', () => {
         firstNumber = storedNumber;
         clickedOperator = operator.textContent;
-        previousOperand.textContent = storedNumber + clickedOperator;
+        previousOperand.textContent =  storedNumber + clickedOperator;
         storedNumber = '';
-      })
+      });
 
   }));
   clearButton.addEventListener('click', () => {
-    currentOperand.innerHTML = 0
+    currentOperand.innerText = ''
+    previousOperand.innerText = ''
     storedNumber = '';
     firstNumber = '';
+    result = ''
 
+  })
+
+  deleteButton.addEventListener('click', () => {
+    currentOperand.textContent = currentOperand.textContent.toString().slice(0,-1);
   })
 
 
   const calculate = () => {
-    const result = operate(parseFloat(firstNumber), parseFloat(storedNumber), clickedOperator);
+    let result = operate(parseFloat(firstNumber), parseFloat(storedNumber), clickedOperator);
     currentOperand.textContent = result;
+    previousOperand.textContent = firstNumber + ' ' + clickedOperator + ' ' + storedNumber;
+    storedNumber = result;
+    console.log(previousOperand.textContent);
     }
   
 equalsKey.addEventListener('click', (e) => {
         calculate();
-        console.log(e);
     });
 
 
