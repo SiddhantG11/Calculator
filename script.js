@@ -25,6 +25,10 @@ function add(a, b) {
   
   // Divide a,b ... 
   function divide(a, b) {
+    if(b==0) {
+      alert('Stop Dividing by 0!!')
+
+    } 
     return a / b;
   };
   

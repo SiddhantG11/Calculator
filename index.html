@@ -9,53 +9,29 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- https://michalosman.github.io/calculator/ -->
-    <div class="calculator">
-        <div class="btn-container">
-            <div class="output">
-                <div class="previous-operand"></div> 
-                <div class="current-operand"></div>
-            </div>
-            <div class="top-btn">
-                <button class="btn clear">CLEAR</button>
-                <button class="btn delete">Delete</button>
-            </div>
-            <div class="btn-grid">
-                <div class="row1">
-                    <button class="btn number">1</button>
-                    <button class="btn number" >2</button>
-                    <button class="btn number" >3</button>
-                    <button class="btn operation">*</button>
-                </div>
-                <div class="row2">
-                <button class="btn number">4</button>
-                <button class="btn number">5</button>
-                <button class="btn number">6</button>
-                <button class="btn operation">+</button>
-                </div>
-
-                <div class="row3">
-                    
-                    <button class="btn number">7</button>
-                    <button class="btn number">8</button>
-                    <button class="btn number">9</button>
-                    <button class="btn operation">-</button>
-                </div>
-                <div class="row4">
-                <button class="btn" >-</button>
-                <button class="btn number">.</button>
-                <button class="btn number">0</button>
-                <button class="btn equals" id="equals">=</button>
-                </div>
-                
-               
-                
-            </div>
-            
+    <div class="calculator-grid">
+        <div class="output">
+            <div data-previous-operand class="previous-operand"></div> 
+            <div data-current-operand class="current-operand"></div>
         </div>
+    <button data-all-clear class="btn clear span-two">AC</button>
+    <button data-delete class="btn delete">DEL</button>
+    <button data-operation class="btn operation">÷</button>
+    <button data-number class="btn number">1</button>
+    <button data-number class="btn number">2</button>
+    <button data-number class="btn number">3</button>
+    <button data-operation class="btn operation">*</button>
+    <button data-number class="btn number">4</button>
+    <button data-number class="btn number">5</button>
+    <button data-number class="btn number">6</button>
+    <button data-operation class="btn operation">+</button>
+    <button data-number class="btn number">7</button>
+    <button data-number class="btn number">8</button>
+    <button data-number class="btn number">9</button>
+    <button data-operation class="btn operation">-</button>
+    <button data-number class="btn number">.</button>
+    <button data-number  class="btn number">0</button>
+    <button data-equals class="btn equals span-two" id="equals">=</button>
     </div>
-
-    
-    
 </body>
 </html>

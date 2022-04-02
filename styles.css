@@ -1,69 +1,58 @@
-* {
+
+*, *::before, *::after {
     box-sizing: border-box;
-    font-family:'Times New Roman', Times, serif;
+    font-family: Gotham Rounded, sans-serif;
     font-weight: normal;
   }
 
-body {
+  body {
     padding: 0;
     margin: 0;
-    background: linear-gradient(to right, #00AAFF,#00FF6C);
-}
-.calculator , .output , .btn-container , .top-btn , .btn-grid {
-    display: flex;
-    border: 1px solid black;
-}
-.calculator {
+    background: linear-gradient(to right, #00AAFF, #00FF6C);
+  }
+
+
+.calculator-grid {
+    display: grid;
     justify-content: center;
-    align-items: center;
+    align-content: center;
     min-height: 100vh;
-    flex-direction: column;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
 }
+
+ button {
+cursor: pointer;
+font-size: 2rem;
+border: 1px solid white;
+outline: none;
+background-color: rgba(255, 255, 255, .75);
+}
+button:hover{
+    background-color: rgba(255,255,255,.90);
+}
+.span-two {
+    grid-column: span 2;
+  }
+
 .output {
-    font-size: 3rem;
-    border: 1px solid #4289a7;
-    opacity: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding: 10px;
-    padding-top: 39px;
-    padding-bottom: 5px;
-    border-radius: 5px;
+  grid-column: 1 / -1;
+  background-color: rgba(0, 0, 0, .75);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .output .previous-operand {
+    color: rgba(255, 255, 255, .75);
     font-size: 1.5rem;
-}
+  }
 
-.output .current-operand {
+  .output .current-operand {
+    color: white;
     font-size: 2.5rem;
-}
-
-.btn-container{
-    flex-direction: column;
-}
-.top-btn {
-    padding: 0.5rem;
-}
-.btn-grid{
-    flex-direction: column;
-}
-
-.row1 , .row2, .row3 , .row4 {
-    display: flex;
-    justify-content: space-evenly;
-}
-.btn {
-    cursor: pointer;
-    font-size: 3rem;
-    border: 2px solid whitesmoke;
-    background-color: rgba(255,255,255,.75);
-    padding: 0.5rem;
-
-}
-
-.btn:hover{
-    background-color: rgba(255,255,255,.90);
-}
+  }
